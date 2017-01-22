@@ -1,12 +1,12 @@
-
 import { Navigation } from 'react-native-navigation';
-import { registerScreens } from './containers';
 
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 
+import { registerScreens } from './containers';
 import * as reducers from './stores/reducers';
+
 const store = createStore(combineReducers(reducers), applyMiddleware(thunk));
 
 export function start() {
@@ -16,7 +16,8 @@ export function start() {
     tabs: [
       {
         screen: 'com.example.WelcomeScreen',
-        label: 'Welcome'
+        label: 'Welcome',
+        icon: require('../img/tmdb.png')
       }
     ]
   });

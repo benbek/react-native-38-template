@@ -12,7 +12,10 @@
 		"react-native-navigation": "next",
 		"redux": "3.x.x",
 		"redux-thunk": "1.x.x",
-		"react-redux": "4.x.x"
+		"react-redux": "4.x.x",
+
+		"moviedb": "latest",
+		"limits.js": "latest"
 	},
 	"devDependencies": {
 		"babel-jest": "18.0.0",

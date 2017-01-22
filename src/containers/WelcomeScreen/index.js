@@ -3,23 +3,32 @@ import {
   StyleSheet,
   Text,
   View,
+  TextInput,
   Button
 } from 'react-native';
 
 import { connect } from 'react-redux';
+import * as moviesActions from '../../stores/my-reducer/actions';
 
 class WelcomeScreen extends Component {
   constructor(props) {
     super(props);
-    this.onClickPushMe = this.onClickPushMe.bind(this);
+    this.onFindMoviesClick = this.onFindMoviesClick.bind(this);
+    this.state = {movieName: ''};
+  }
+
+  componentDidMount() {
+    this.props.dispatch(moviesActions.fetchMovies('Alien'));
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
+        <TextInput
+          style={styles.welcome}
+          placeholder="Type a name of a movie..."
+          onChangeText={(text) => this.setState({movieName: text})}
+        />
         <Text style={styles.instructions}>
           {this.props.name}
         </Text>
@@ -27,15 +36,16 @@ class WelcomeScreen extends Component {
           Press Cmd+R to reload,{'\n'}
           Cmd+D or shake for dev menu
         </Text>
-        <Button title="Push me" onPress={this.onClickPushMe} />
+        <Button title="Find Movies" onPress={this.onFindMoviesClick} />
       </View>
     );
   }
 
-  onClickPushMe() {
-    this.props.navigator.push({
-      screen: 'com.example.WelcomeScreen'
-    });
+  onFindMoviesClick() {
+    this.props.dispatch(moviesActions.fetchMovies(this.state.movieName));
+    // this.props.navigator.push({
+    //   screen: 'com.example.WelcomeScreen'
+    // });
   }
 }
 
@@ -56,6 +66,7 @@ const styles = StyleSheet.create({
   },
   welcome: {
     fontSize: 20,
+    width: 300,
     textAlign: 'center',
     margin: 10,
   },
