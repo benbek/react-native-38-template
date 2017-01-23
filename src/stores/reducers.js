@@ -1,5 +1,5 @@
-import myReducer from './my-reducer/reducer';
+import moviesReducer from './movies/reducer';
 
 export {
-  myReducer
+  moviesReducer
 };

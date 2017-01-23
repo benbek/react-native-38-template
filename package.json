@@ -13,7 +13,9 @@
 		"redux": "3.x.x",
 		"redux-thunk": "1.x.x",
 		"react-redux": "4.x.x",
+		"seamless-immutable": "7.x.x",
 
+		"react-native-sane-listview": "latest",
 		"moviedb": "latest",
 		"limits.js": "latest"
 	},

@@ -16,7 +16,7 @@ export function start() {
     tabs: [
       {
         screen: 'com.example.WelcomeScreen',
-        label: 'Welcome',
+        label: 'Search Movies',
         icon: require('../img/tmdb.png')
       }
     ]

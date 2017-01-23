@@ -4,9 +4,12 @@ import moviesService from '../../services/fetch-movies';
 export function fetchMovies(movieName) {
   return async (dispatch, getState) => {
     try {
-      const res = await moviesService.getMoviesByName(movieName);
-      console.log(res);
-      dispatch({ type: types.MOVIES_FETCHED, movies });
+      const movies = await moviesService.getMoviesByName(movieName);
+      dispatch({ 
+        type: types.MOVIES_FETCHED, 
+        movieName, 
+        movies
+      });
     } catch (e) {
       console.error(e);
     }
