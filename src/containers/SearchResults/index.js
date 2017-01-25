@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 
 import MovieList from '../../components/MovieList';
+import * as moviesSelectors from '../../stores/movies/reducer';
 
 import { connect } from 'react-redux';
 
@@ -13,10 +14,13 @@ class SearchResults extends Component {
 
   render() {
     const { searchedFor, movies } = this.props;
+    const childComponent = (!movies || movies.length === 0) 
+      ? <Text style={styles.heading}>No movies of the name '{searchedFor}' were found.</Text>
+      : <MovieList movies={movies} />;
 
     return (
       <View style={styles.container}>
-        <MovieList movies={movies} />
+        { childComponent }
       </View>
     );
   }
@@ -24,8 +28,8 @@ class SearchResults extends Component {
 
 function mapStateToProps(state) {
   return {
-    searchedFor: state.moviesReducer.name,
-    movies: state.moviesReducer.movies
+    searchedFor: moviesSelectors.getKeyword(state),
+    movies: moviesSelectors.getMovies(state)
   };
 }
 

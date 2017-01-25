@@ -17,3 +17,13 @@ export default function reduce(state = initialState, action = {}) {
       return state;
   }
 }
+
+// Selectors
+
+export function getKeyword(state) {
+  return state.moviesReducer.name;
+}
+
+export function getMovies(state) {
+  return state.moviesReducer.movies;
+}
