@@ -2,7 +2,7 @@ import * as types from './action-types';
 import moviesService from '../../services/fetch-movies';
 
 export function fetchMovies(movieName) {
-  return async (dispatch, getState) => {
+  return async function(dispatch, getState) {
     try {
       const movies = await moviesService.getMoviesByName(movieName);
       dispatch({ 
