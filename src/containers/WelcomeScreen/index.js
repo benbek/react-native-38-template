@@ -22,7 +22,7 @@ class WelcomeScreen extends Component {
     return (
       <View style={styles.container}>
         <TextInput
-          style={styles.welcome}
+          style={styles.movieNameInput}
           placeholder="Type a name of a movie..."
           onChangeText={(text) => this.setState({movieName: text})}
         />
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  welcome: {
+  movieNameInput: {
     fontSize: 20,
     width: 300,
     textAlign: 'center',
